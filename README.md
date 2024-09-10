@@ -577,44 +577,50 @@ Example Workflow:
     Step 2: Fit the data to a model (such as the Cole-Cole model) to extend the frequency range into terahertz.
     Step 3: Use these tissue properties in your FEM or FDTD simulation to model the interaction of terahertz signals with the tissue.
 
-Hotkey Options:
-
-    W: Continue exploring additional public datasets and expand model suggestions.
-    S: Explain how to use Cole-Cole models for frequency-dependent tissue properties.
-    D: Suggest improvements for incorporating real-time measurements into simulations.
-    Q: Question about fitting data to specific terahertz models for biological tissues.
-
-
 This is how to use the Cole-Cole model for frequency-dependent tissue properties. Let’s go over its background and how it can be applied to model biological tissue's dielectric behavior over a broad range of frequencies, including the terahertz range.
 Overview of the Cole-Cole Model:
 
-The Cole-Cole model is widely used to describe the dielectric permittivity of biological tissues as a function of frequency. The dielectric permittivity is a critical parameter that quantifies how a material (in this case, biological tissue) polarizes in response to an electric field. The Cole-Cole model provides a way to account for the dispersion (frequency-dependent variation) of the permittivity and is a generalization of the Debye relaxation model.
+Here’s a rewritten version of the explanation and mathematical representation, with improved clarity and LaTeX formatting for readability:
 
-The complex relative permittivity ε(ω)ε(ω) of a tissue as a function of angular frequency ωω is given by the Cole-Cole equation:
-ε(ω)=ε∞+∑i=1NΔεi1+(jωτi)1−αi−jσsωε0
-ε(ω)=ε∞​+i=1∑N​1+(jωτi​)1−αi​Δεi​​−jωε0​σs​​
+---
+
+### The Cole-Cole Model for Dielectric Permittivity
+
+The **Cole-Cole model** is widely used to describe the **dielectric permittivity** of biological tissues as a function of frequency. Dielectric permittivity is a critical parameter that quantifies how a material (in this case, biological tissue) polarizes in response to an electric field. The Cole-Cole model accounts for the **dispersion** (frequency-dependent variation) of the permittivity and serves as a generalization of the **Debye relaxation model**.
+
+The complex relative permittivity $\epsilon(\omega)$ of a tissue as a function of angular frequency $\omega$ is given by the Cole-Cole equation:
+
+$$
+\epsilon(\omega) = \epsilon_\infty + \sum_{i=1}^N \frac{\Delta\epsilon_i}{1 + (j\omega\tau_i)^{1-\alpha_i}} - j \frac{\sigma_s}{\omega \epsilon_0}
+$$
 
 Where:
 
-    ε∞ε∞​ is the permittivity at infinite frequency.
-    Δεi=εs−ε∞Δεi​=εs​−ε∞​ is the difference between the static permittivity εsεs​ and the high-frequency permittivity ε∞ε∞​.
-    τiτi​ is the relaxation time for the ii-th process.
-    αiαi​ is the Cole-Cole distribution parameter (a measure of the broadness of the dispersion).
-    σsσs​ is the static conductivity.
-    jj is the imaginary unit (used to account for the phase shift between the electric field and polarization).
-    ε0ε0​ is the permittivity of free space (8.854×10−12 F/m8.854×10−12F/m).
+- $\epsilon_\infty$: The permittivity at infinite frequency.
+- $\Delta\epsilon_i = \epsilon_s - \epsilon_\infty$: The difference between the static permittivity $\epsilon_s$ and the high-frequency permittivity $\epsilon_\infty$.
+- $\tau_i$: The relaxation time for the $i$-th process.
+- $\alpha_i$: The Cole-Cole distribution parameter, which measures the broadness of the dispersion.
+- $\sigma_s$: The static conductivity.
+- $j$: The imaginary unit, used to account for the phase shift between the electric field and polarization.
+- $\epsilon_0$: The permittivity of free space, $8.854 \times 10^{-12} \, \text{F/m}$.
 
-Breakdown of Components:
+### Breakdown of Components:
 
-    ε∞ε∞​: Represents the tissue's ability to polarize at very high frequencies, where there is almost no lag in the polarization response.
+- **$\epsilon_\infty$**: Represents the tissue’s ability to polarize at very high frequencies, where there is almost no lag in the polarization response.
 
-    τiτi​: This parameter represents the characteristic time over which the tissue's dipoles reorient themselves in response to a changing electric field. The longer the relaxation time, the slower the response.
+- **$\tau_i$**: Represents the characteristic time over which the tissue's dipoles reorient themselves in response to a changing electric field. The longer the relaxation time, the slower the response.
 
-    αiαi​: When αi=0αi​=0, the equation reduces to the Debye model. If 0<αi<10<αi​<1, the relaxation is broader and more gradual.
+- **$\alpha_i$**: When $\alpha_i = 0$, the equation reduces to the Debye model. If $0 < \alpha_i < 1$, the relaxation is broader and more gradual.
 
-    σsσs​: Represents the tissue’s static conductivity, which contributes to the dielectric loss and is responsible for energy dissipation in the tissue.
+- **$\sigma_s$**: Represents the tissue’s static conductivity, contributing to dielectric loss and energy dissipation within the tissue.
 
-    ωω: The angular frequency of the electromagnetic wave, where ω=2πfω=2πf, with ff being the frequency of the wave.
+- **$\omega$**: The angular frequency of the electromagnetic wave, where $\omega = 2\pi f$, with $f$ being the frequency of the wave.
+
+---
+
+This version uses LaTeX-style math rendering to better represent the mathematical equations and symbols. It also breaks down the terms more clearly for better understanding. You can paste this into your README on GitHub, and it will display the equations neatly.
+
+
 
 Applying the Cole-Cole Model in C++:
 
